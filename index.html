@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>temp convert</title>
+    <style>
+        div{
+            padding-top: 5px;
+            margin-top: 150px;
+            margin-left: 30%;
+            background-color: #B97910;
+            width: 500px;
+            height: auto;
+            padding-bottom: 15px;
+
+        }
+        p{
+            color: #D1CDC7;
+            font-size: 25px;
+            font-weight: 800;
+        }
+        
+        .txt{
+            font-size: 20px;
+            font-weight: 900;
+            color: #353331;
+        }
+        
+        button{
+             background-color: #FB9803;
+             padding: 10px 20px;
+             color: #D1CDC7;
+             border:1px solid #D1CDC7;
+             font-weight: 800;
+             border-radius: 10px;
+
+        }
+        input[type=number]{
+            padding: 12px 20px;
+            border:1px solid #D1CDC7;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <center>
+    <h1><u>Temperature Converter</u></h1>
+    
+    <input type="radio" class="radio" id="re" name="fc"  value="fah" >
+    <label class="txt">Farenheit</label>
+    
+    <input type="radio" class="radio" id="red" name="fc" value="cel">
+    <label class="txt">Celcius</label>
+   <br><br>
+    <label class="txt">Enter temperature: </label><input type="number" id="temp" placeholder="temperature"><br><br>
+    <button onclick="convert();">Convert Temperature!</button>
+    <p id="demo" ></p></center>
+    </div>
+
+    <script>
+        var a;
+        function convert() {
+            var ValueS;
+            a=document.getElementById("temp").value
+            let radio = document.querySelectorAll('input[name="fc"]');
+            for (let i of radio) {
+                if (i.checked) {
+                    ValueS = i.value;
+                    break;
+                }
+            }
+
+            if (ValueS == document.getElementById("re").value) {
+                var result = (a - 32) * (5 / 9);
+                var res=result.toFixed(2);
+                document.getElementById("demo").innerHTML = res +"&deg;C";
+            } else if (ValueS == document.getElementById("red").value) {
+                var result = ((a * 9) / 5) + 32;
+                var res=result.toFixed(2);
+                document.getElementById("demo").innerHTML = res+ "&deg;C";
+            }
+            else{
+                document.getElementById("demo").innerHTML= "Enter temperature!";
+            }
+        }
+    </script>
+</body>
+
+</html>
